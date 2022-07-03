@@ -1,0 +1,45 @@
+.header{
+    height: 80px;
+    display: grid;
+    grid-area: header;
+}
+.header_nav {
+    text-transform: uppercase;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+li{
+    font-weight: 600;
+    height: 60%;
+    display: flex;
+    margin: 0 5px;
+}
+ul{
+    min-width: 33%;
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+}
+.header_cart_currency{
+    justify-content: flex-end;
+}
+ .logo{
+    width: 41px;
+    height: 41px;
+ }
+ .cart{
+    width: 20px;
+    height: 20px;
+ }
+
+.for_link{
+    text-decoration:none;
+    width: 75px;
+    text-align: center;
+}
+.active{
+    color: #5ECE7B;
+    border-bottom: #5ECE7B 2px solid;
+    /* transform: scale(1.1); */
+}
