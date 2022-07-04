@@ -18,11 +18,7 @@ export default class ViewGoods extends Component {
     return (
       <section className="wrapper_main_section">
         {this.props.goods.map((item) => (
-          <Link
-            key={item.id}
-            to={`${window.location.pathname}/${item.id}`}
-            onClick={this.test}
-          >
+          <Link key={item.id} to={`${window.location.pathname}/${item.id}`}>
             <div
               className={
                 Boolean(item.inStock) ? "goods_info" : "goods_info_oppacity"
