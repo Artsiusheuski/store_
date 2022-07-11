@@ -14,26 +14,29 @@ class App extends Component {
     clothes: "/clothes",
     tech: "/tech",
   };
+
   render() {
     return (
       <div className="wrapper">
         <Router>
           <Header></Header>
-          <Routes>
-            <Route exact path={this.match.all} element={<All />} />
-            <Route exact path={this.match.clothes} element={<Clothes />} />
-            <Route exact path={this.match.tech} element={<Tech />} />
-            <Route path="/cart" element={<Cart />} />
-            {Object.values(this.match).map((item, id) => (
-              <Route
-                key={id}
-                path={item + "/:discriptionsgoods"}
-                element={<DiscriptionsGoods />}
-              />
-            ))}
-
-            <Route path="*" element={<Error />} />
-          </Routes>
+          <main className="wrapper_main">
+            <Routes>
+              <Route exact path={"/"} element={<All />} />
+              <Route exact path={this.match.all} element={<All />} />
+              <Route exact path={this.match.clothes} element={<Clothes />} />
+              <Route exact path={this.match.tech} element={<Tech />} />
+              <Route path="/cart" element={<Cart />} />
+              {Object.values(this.match).map((item, id) => (
+                <Route
+                  key={id}
+                  path={item + "/:discriptionsgoods"}
+                  element={<DiscriptionsGoods />}
+                />
+              ))}
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </main>
         </Router>
       </div>
     );

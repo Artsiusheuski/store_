@@ -2,7 +2,6 @@ import { React, Component } from "react";
 import "./categories.css";
 import { Link } from "react-router-dom";
 import addToCart from "./img/Common.png";
-import DiscriptionsGoods from "./discriptionsGoods/DiscriptionsGoods";
 
 export default class ViewGoods extends Component {
   // symbol = Reduxe Store/ SelectCurency
@@ -10,15 +9,20 @@ export default class ViewGoods extends Component {
     super();
     this.state = {
       addToCartBtn: "goods_button_cart_closed",
-      id: "j",
     };
   }
 
+  linkToAll = () => {
+    return window.location.pathname === "/"
+      ? (window.location.pathname = "/all")
+      : null;
+  };
+
   render() {
     return (
-      <section className="wrapper_main_section">
-        {this.props.goods.map((item) => (
-          <Link key={item.id} to={`${window.location.pathname}/${item.id}`}>
+      <section onClick={this.linkToAll} className="wrapper_main_section">
+        {this.props.goods.map((item, index) => (
+          <Link key={index} to={`${window.location.pathname}/${item.id}`}>
             <div
               className={
                 Boolean(item.inStock) ? "goods_info" : "goods_info_oppacity"

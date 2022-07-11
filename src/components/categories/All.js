@@ -7,7 +7,6 @@ import ViewGoods from "./ViewGoods";
 export default class All extends Component {
   constructor() {
     super();
-
     this.state = {
       nameCategory: "",
       goods: [],
@@ -31,10 +30,10 @@ export default class All extends Component {
 
   render() {
     return (
-      <main className="wrapper_main">
+      <>
         <h1 className="wrapper_main_title">{this.state.nameCategory.name}</h1>
         <ViewGoods goods={this.state.goods} symbol={this.state.symbol} />
-      </main>
+      </>
     );
   }
 }
