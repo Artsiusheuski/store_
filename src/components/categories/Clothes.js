@@ -28,13 +28,13 @@ export default class Clotheth extends Component {
         })
       );
   }
+
   render() {
-    console.log(this.state.goods);
     return (
-      <main className="wrapper_main">
+      <>
         <h1 className="wrapper_main_title">{this.state.nameСategory}</h1>
         <ViewGoods goods={this.state.goods} symbol={this.state.symbol} />
-      </main>
+      </>
     );
   }
 }

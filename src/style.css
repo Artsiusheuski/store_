@@ -1,14 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 * {
-    /* -webkit-user-select: none;
--moz-user-select: -moz-none;
--ms-user-select: none;
- user-select: none; */
-
-/* -webkit-appearance: none; */
-/* -moz-appearance: radio-container; */
- /* appearance: none; */
     margin: 0;
     padding: 0;
     color: #1D1F22;
@@ -28,5 +20,10 @@
         "header"
         "main"
 }
-
+.wrapper_main{
+    grid-area: main;
+    display: grid;
+    grid-template: 1fr;
+ }
+ 
 

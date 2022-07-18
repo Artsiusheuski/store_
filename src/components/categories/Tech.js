@@ -28,12 +28,13 @@ export default class Tech extends Component {
         })
       );
   }
+
   render() {
     return (
-      <main className="wrapper_main">
+      <>
         <h1 className="wrapper_main_title">{this.state.nameCategory}</h1>
         <ViewGoods goods={this.state.goods} symbol={this.state.symbol} />
-      </main>
+      </>
     );
   }
 }

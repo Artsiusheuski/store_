@@ -1,0 +1,159 @@
+.wrapper_goods_descriptions{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, 9% 60% 25%);
+}
+
+.wrapper_goods_descriptions>div{
+    margin-top: 55px;
+}
+
+.goods_descriptions_img{
+   
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.goods_descriptions_bigImg{
+    text-align: center;
+    width: 100%;
+    max-height: 595px;
+}
+
+.goods_descriptions_bigImg>img{
+    width: 70%;
+    height: 90%;
+} 
+
+.goods_descriptions_img>img{
+    width: 75%;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.goods_descriptions_order>div>span{
+    line-height: 2rem;
+    font-size: 24px;
+}
+
+.goods_descriptions_order{
+    display: grid;
+    align-content: stretch;
+    max-height: 595px;
+}
+
+.goods_descriptions_btn{
+    cursor: pointer;
+    border: none;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 44px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #5ECE7B;
+}
+
+.goods_descriptions_btn:hover{
+    background-color:#646b66 ;
+    color:#5ECE7B ;
+}
+
+.goods_descriptions_check{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.goods_descriptions_check_label{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.goods_descriptions_check_box{
+    display: flex;
+    
+}
+
+.goods_descriptions_check_items{
+    border: 1px black solid;
+    width: 55px;
+    height: 38px;
+    display: grid;
+    margin-right: 10px;
+    place-items: center;
+    cursor: pointer;
+} 
+
+.goods_descriptions_check_color{
+    width: 31px;
+    height: 31px;
+    display: grid;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid #baf7f7;
+    box-sizing: border-box;
+} 
+
+.goods_descriptions_check_down{
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+input {
+    all: unset;
+    color: #ffffff;
+  }
+
+.goods_descriptions_check_color:checked{
+    width: 31px;
+    height: 31px;
+    border: 1px solid #5ECE7B;
+    box-sizing: border-box;
+}
+
+.goods_descriptions_check_items:checked + span{
+    background:#1D1F22;
+    color: #ffffff;
+    width: 55px;
+    height: 38px;
+} 
+
+.goods_descriptions_check_box>label{
+    display: grid;
+    place-items: center;
+}
+
+.goods_descriptions_check_box>label>span{
+    margin-left: -10px;
+    position: absolute;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.text_description_html{
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 25.59px
+}
+
+.text_description_html>div>ul{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+
+
+
+
+

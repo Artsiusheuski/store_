@@ -40,7 +40,7 @@ export const ALL_CATEGORY_SECTION = gql`
   }
 `;
 
-export const GET_PRODUCTS_BY_ID = gql`
+export const GET_PRODUCT_ID = gql`
   query product($id: String!) {
     product(id: $id) {
       id
