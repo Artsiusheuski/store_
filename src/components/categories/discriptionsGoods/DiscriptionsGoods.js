@@ -14,13 +14,15 @@ export default class DiscriptionsGoods extends Component {
       //Attributes/size
       //color                         count-
       goodsAttributes: [],
+      bigGoodsImg: "",
       goodsGallery: [],
       goodsPrices: [],
       goodsDiscription: ``,
-      colorActive: "",
-      itemsActive: "",
     };
+
     this.getAttributes = this.getAttributes.bind(this);
+    this.imageSwitcher = this.imageSwitcher.bind(this);
+    this.nameCheck = React.createRef();
   }
 
   idGoods() {
@@ -39,8 +41,9 @@ export default class DiscriptionsGoods extends Component {
       })
       .then((result) =>
         this.setState({
+          bigGoodsImg: result.data.product.gallery[0],
           goodsGallery: result.data.product.gallery,
-          goodsAttributes: result.data.product.attributes,
+          goodsAttributes: [...result.data.product.attributes],
           goodsPrices: result.data.product.prices.find(
             (item) => item.currency.symbol === "$" //get from redux/
           ).amount,
@@ -48,18 +51,16 @@ export default class DiscriptionsGoods extends Component {
         })
       );
   }
+  componentDidUpdate() {
+    this.textHTML = document.querySelector(".text_description_html");
+    this.textHTML.insertAdjacentHTML("afterbegin", this.state.goodsDiscription);
+  }
+
   getAttributes(event) {
-    event.preventDefault();
-    if (event.target.id.includes("#")) {
-      this.setState({
-        colorActive: "colorActive",
-      });
-    } else {
-      this.setState({
-        itemsActive: "itemsActive",
-      });
-    }
-    // console.log(event.target.id);
+    console.log();
+  }
+  imageSwitcher(event) {
+    this.setState({ bigGoodsImg: event.target.src });
   }
 
   render() {
@@ -67,44 +68,58 @@ export default class DiscriptionsGoods extends Component {
       <section className="wrapper_goods_descriptions">
         <div className="goods_descriptions_img">
           {this.state.goodsGallery.map((item, id) => (
-            <img key={id} src={item} alt="imgGoods" />
+            <img
+              onClick={this.imageSwitcher}
+              key={id}
+              src={item}
+              alt="imgGoods"
+            />
           ))}
         </div>
-        {console.log(this.state.goodsDiscription)}
+        {/* {console.log(this.state.goodsDiscription)} */}
         <div className="goods_descriptions_bigImg">
-          <img src={this.state.goodsGallery[0]} alt="img" />
+          <img src={this.state.bigGoodsImg} alt="img" />
         </div>
         <div className="goods_descriptions_order">
           <div>
             <h2>NameGoods</h2>
             <span>NamesBrend</span>
           </div>
-
           {this.state.goodsAttributes.map((item, index) => (
-            <div className="goods_descriptions_check" key={index}>
-              <label className="goods_descriptions_check_label">
-                {item.id}:
-              </label>
-              <div className="goods_descriptions_check_box">
-                {item.items.map((item) => (
-                  <span
-                    onClick={this.getAttributes}
-                    className={
-                      item.value.includes("#")
-                        ? `goods_descriptions_check_color ${this.state.colorActive}`
-                        : `goods_descriptions_check_items ${this.state.itemsActive}`
-                    }
-                    id={item.value}
-                    key={item.id}
-                    style={{
-                      backgroundColor: item.value,
-                    }}
-                  >
-                    {item.value.includes("#") ? "" : item.value}
-                  </span>
+            <form
+              onChange={this.getAttributes}
+              className="goods_descriptions_check"
+              key={index}
+            >
+              <p id={item.id} className="goods_descriptions_check_label">
+                {item.name} :
+              </p>
+              <div
+                ref={this.nameCheck}
+                className="goods_descriptions_check_box"
+              >
+                {item.items.map((item, index) => (
+                  <label id="lb" key={index}>
+                    <input
+                      className={
+                        item.value.includes("#")
+                          ? "goods_descriptions_check_color"
+                          : "goods_descriptions_check_items"
+                      }
+                      name="text"
+                      type="radio"
+                      value={item.value}
+                      style={{
+                        backgroundColor: item.value.includes("#")
+                          ? item.value
+                          : "",
+                      }}
+                    />
+                    <span>{!item.value.includes("#") && item.value}</span>
+                  </label>
                 ))}
               </div>
-            </div>
+            </form>
           ))}
 
           <div className="goods_descriptions_check_down">
@@ -114,7 +129,7 @@ export default class DiscriptionsGoods extends Component {
             <button className="goods_descriptions_btn" type="submit">
               ADD TO CART
             </button>
-            <div className="text">{this.state.goodsDiscription}</div>
+            <div className="text_description_html"></div>
           </div>
         </div>
       </section>
