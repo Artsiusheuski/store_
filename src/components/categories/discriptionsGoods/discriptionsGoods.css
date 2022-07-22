@@ -9,7 +9,6 @@
 }
 
 .goods_descriptions_img{
-   
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -39,8 +38,7 @@
 
 .goods_descriptions_order{
     display: grid;
-    align-content: stretch;
-    max-height: 595px;
+    max-height: 80vh;
 }
 
 .goods_descriptions_btn{
@@ -67,14 +65,14 @@
     justify-content: space-around;
 }
 
-.goods_descriptions_check_label{
+.goods_font_label{
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
     font-size: 18px;
 }
 
 .goods_descriptions_check_box{
     display: flex;
-    
 }
 
 .goods_descriptions_check_items{
@@ -135,13 +133,15 @@ input {
     cursor: pointer;
     display: grid;
     place-items: center;
+    font-family: 'Source Sans Pro';
 }
 
 .text_description_html{
     margin-top: 10%;
     display: flex;
+    font-family: 'Roboto', sans-serif;
     flex-direction: column;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
     line-height: 25.59px
 }
@@ -150,6 +150,11 @@ input {
     display: flex;
     flex-direction: column;
     margin-bottom: 5%;
+}
+
+.text_description_html>div>ul>li>span{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
 
