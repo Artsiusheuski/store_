@@ -1,3 +1,7 @@
+a{
+   text-decoration:none;
+}
+
 .wrapper_main_title{
    margin: 35px 0;
    padding: 0;
@@ -31,6 +35,7 @@
    width: 386px;
    opacity: 0.4;
 }
+
 .goods_info_out{
    font-size: 24px;
    text-transform: uppercase;
@@ -44,6 +49,7 @@
  .goods_info_out>p{
    position: absolute;
 } 
+
 .goods_info_out_close>p{
    display: none;
 }
@@ -71,14 +77,17 @@
 .goods_button_cart{
    margin-right: 10px;
    margin-top: -50px;
-   cursor: pointer;
    position: relative;
-
-}
-.goods_button_cart_closed{
    display: none;
 }
 
-a{
-   text-decoration:none;
+.goods_info:hover .goods_button_cart{
+   display: block;
 }
+
+.goods_button_cart>img{
+   cursor:grab;
+}
+
+
+

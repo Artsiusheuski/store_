@@ -5,18 +5,21 @@ import addToCart from "./img/Common.png";
 
 export default class ViewGoods extends Component {
   // symbol = Reduxe Store/ SelectCurency
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      addToCartBtn: "goods_button_cart_closed",
+      addToCartBtn: "goods_button_cart",
     };
   }
 
   linkToAll = () => {
-    return window.location.pathname === "/"
-      ? (window.location.pathname = "/all")
-      : null;
+    window.location.pathname === "/" && (window.location.pathname = "/all");
   };
+
+  addToCart(event) {
+    event.preventDefault();
+    console.log("ok"); // add goods from redux-store,with help action
+  }
 
   render() {
     return (
@@ -55,7 +58,12 @@ export default class ViewGoods extends Component {
                   </h4>
                 </div>
                 <div className={this.state.addToCartBtn}>
-                  <img src={addToCart} alt="addToCart" title="Add to cart" />
+                  <img
+                    onClick={this.addToCart}
+                    src={addToCart}
+                    alt="AddToCart"
+                    title="Add to cart"
+                  />
                 </div>
               </div>
             </div>

@@ -27,7 +27,7 @@
 
 .goods_descriptions_img>img{
     width: 75%;
-    margin-bottom: 30px;
+    margin-bottom: 30%;
     cursor: pointer;
 }
 
@@ -38,7 +38,7 @@
 
 .goods_descriptions_order{
     display: grid;
-    max-height: 80vh;
+    max-height: 100vh;
 }
 
 .goods_descriptions_btn{
@@ -137,12 +137,11 @@ input {
 }
 
 .text_description_html{
-    margin-top: 10%;
+    margin-top: 5%;
     display: flex;
     font-family: 'Roboto', sans-serif;
     flex-direction: column;
     font-weight: 400;
-    font-size: 16px;
     line-height: 25.59px
 }
 
@@ -157,6 +156,11 @@ input {
     font-weight: 400;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 
 

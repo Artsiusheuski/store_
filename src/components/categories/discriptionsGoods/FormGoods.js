@@ -14,11 +14,12 @@ export default class FormGoods extends Component {
 
   addToCart(event) {
     event.preventDefault();
+
     let params = event.target.elements;
     let countCheck = [];
     let countName = [];
     let boxNames;
-    let goods = [this.props.nameGood];
+    let goods = [this.props.nameGood, [this.props.goodsFoto]];
 
     for (let i = 0; i < params.length; i++) {
       if (params[i].name) {
@@ -40,7 +41,7 @@ export default class FormGoods extends Component {
 
   render() {
     return (
-      <form name="formGoods" onSubmit={this.addToCart} action="">
+      <form onSubmit={this.addToCart} action="">
         {console.log(this.state.goodsParams)}
         {this.props.goodsAttributes.map((item, index) => (
           <div className="goods_descriptions_check" key={index}>
@@ -72,6 +73,8 @@ export default class FormGoods extends Component {
           <h4 className="goods_font_label">Price:</h4>
           <span>$ {this.props.goodsPrices}</span>
           {/* needed get to symbol for amount */}
+        </div>
+        <div>
           <button className="goods_descriptions_btn" type="submit">
             ADD TO CART
           </button>

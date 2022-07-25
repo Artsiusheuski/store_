@@ -86,6 +86,7 @@ export default class DiscriptionsGoods extends Component {
             goodsAttributes={this.state.goodsAttributes}
             goodsPrices={this.state.goodsPrices}
             nameGood={this.idGoods()}
+            goodsFoto={this.state.goodsGallery}
           />
           <div ref={this.getElement} className="text_description_html"></div>
         </div>
