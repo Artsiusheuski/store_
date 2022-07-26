@@ -14,8 +14,7 @@ export default class DiscriptionsGoods extends Component {
       goodsGallery: [],
       goodsGalleryBig: "",
       goodsPrices: [],
-      goodsName: "",
-      goodsBrand: "",
+      goodsDiscriptions: {},
     };
 
     this.imageSwitcher = this.imageSwitcher.bind(this);
@@ -39,8 +38,10 @@ export default class DiscriptionsGoods extends Component {
       .then((result) => {
         return (
           this.setState({
-            goodsName: result.data.product.name,
-            goodsBrand: result.data.product.brand,
+            goodsDiscriptions: {
+              name: result.data.product.name,
+              brand: result.data.product.brand,
+            },
             goodsGallery: result.data.product.gallery,
             goodsGalleryBig: result.data.product.gallery[0],
             goodsAttributes: result.data.product.attributes,
@@ -63,7 +64,6 @@ export default class DiscriptionsGoods extends Component {
   render() {
     return (
       <section className="wrapper_goods_descriptions">
-        {console.log(this.state.goodsParams)}
         <div className="goods_descriptions_img">
           {this.state.goodsGallery.map((item, id) => (
             <img
@@ -79,13 +79,13 @@ export default class DiscriptionsGoods extends Component {
         </div>
         <div className="goods_descriptions_order">
           <div>
-            <h2>{this.state.goodsName}</h2>
-            <span>{this.state.goodsBrand}</span>
+            <h2>{this.state.goodsDiscriptions.name}</h2>
+            <span>{this.state.goodsDiscriptions.brand}</span>
           </div>
           <FormGoods
             goodsAttributes={this.state.goodsAttributes}
-            goodsPrices={this.state.goodsPrices}
-            nameGood={this.idGoods()}
+            goodsPrices={this.state.goodsPrices} //+symbol
+            goodsDiscriptions={this.state.goodsDiscriptions}
             goodsFoto={this.state.goodsGallery}
           />
           <div ref={this.getElement} className="text_description_html"></div>

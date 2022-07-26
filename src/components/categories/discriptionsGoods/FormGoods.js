@@ -8,35 +8,38 @@ export default class FormGoods extends Component {
     this.state = {
       goodsParams: {},
     };
-    console.log(this.props);
+
     this.addToCart = this.addToCart.bind(this);
   }
 
   addToCart(event) {
     event.preventDefault();
 
-    let params = event.target.elements;
-    let countCheck = [];
-    let countName = [];
-    let boxNames;
-    let goods = [this.props.nameGood, [this.props.goodsFoto]];
+    const params = event.target.elements;
 
-    for (let i = 0; i < params.length; i++) {
-      if (params[i].name) {
-        countName.push(params[i].name);
-        boxNames = new Set(countName);
-      }
-      if (params[i].checked) {
-        countCheck.push(params[i].checked);
-        goods.push(params[i].name, params[i].value);
-      }
-    }
+    // let countCheck = [];
+    // let countName = [];
+    // let boxNames;
+    const goods = {
+      discriptionGoods: this.props.goodsDiscriptions,
+      priceGoods: this.props.goodsPrices,
+      imageGoods: this.props.goodsFoto,
+      paramsGoods: params,
+    };
+    console.log(goods);
+    // for (let i = 0; i < params.length; i++) {
+    //   if (params[i].name) {
+    //     countName.push(params[i].name);
+    //     boxNames = new Set(countName);
+    //   }
+    //   if (params[i].checked) {
+    //     countCheck.push(params[i].checked);
+    //     goods.push(params[i].name, params[i].value);
+    //   }
+    // }
 
-    if (countCheck.length === boxNames.size) {
-      this.setState({ goodsParams: { ...goods } });
-    } else {
-      alert("You must select all options");
-    }
+    // if (countCheck.length === boxNames.size)
+    //   this.setState({ goodsParams: { ...goods } });
   }
 
   render() {
@@ -55,6 +58,7 @@ export default class FormGoods extends Component {
                         ? "goods_descriptions_check_color"
                         : "goods_descriptions_check_items"
                     }
+                    defaultChecked
                     name={this.name}
                     type="radio"
                     value={item.value}
