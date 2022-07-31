@@ -3,26 +3,22 @@ import { Component } from "react";
 import client from "../../data";
 import { GET_PRODUCT_ID } from "../../data/data";
 import "./discriptionsGoods.css";
+import FormGoods from "./FormGoods";
 
 export default class DiscriptionsGoods extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
-      //name,                     count+
-      //brand                              FOTO-1
-      //symbol/amount                 1
-      //Attributes/size
-      //color                         count-
       goodsAttributes: [],
-      bigGoodsImg: "",
       goodsGallery: [],
+      goodsGalleryBig: "",
       goodsPrices: [],
-      goodsDiscription: ``,
+      goodsDiscriptions: {},
     };
 
-    this.getAttributes = this.getAttributes.bind(this);
     this.imageSwitcher = this.imageSwitcher.bind(this);
-    this.nameCheck = React.createRef();
+    this.getElement = React.createRef();
   }
 
   idGoods() {
@@ -39,28 +35,28 @@ export default class DiscriptionsGoods extends Component {
           id: this.idGoods(),
         },
       })
-      .then((result) =>
-        this.setState({
-          bigGoodsImg: result.data.product.gallery[0],
-          goodsGallery: result.data.product.gallery,
-          goodsAttributes: [...result.data.product.attributes],
-          goodsPrices: result.data.product.prices.find(
-            (item) => item.currency.symbol === "$" //get from redux/
-          ).amount,
-          goodsDiscription: result.data.product.description,
-        })
-      );
-  }
-  componentDidUpdate() {
-    this.textHTML = document.querySelector(".text_description_html");
-    this.textHTML.insertAdjacentHTML("afterbegin", this.state.goodsDiscription);
+      .then((result) => {
+        return (
+          this.setState({
+            goodsDiscriptions: {
+              name: result.data.product.name,
+              brand: result.data.product.brand,
+            },
+            goodsGallery: result.data.product.gallery,
+            goodsGalleryBig: result.data.product.gallery[0],
+            goodsAttributes: result.data.product.attributes,
+            goodsPrices: result.data.product.prices,
+          }),
+          this.getElement.current.insertAdjacentHTML(
+            "afterbegin",
+            result.data.product.description
+          )
+        );
+      });
   }
 
-  getAttributes(event) {
-    console.log();
-  }
   imageSwitcher(event) {
-    this.setState({ bigGoodsImg: event.target.src });
+    this.setState({ goodsGalleryBig: event.target.src });
   }
 
   render() {
@@ -76,61 +72,21 @@ export default class DiscriptionsGoods extends Component {
             />
           ))}
         </div>
-        {/* {console.log(this.state.goodsDiscription)} */}
         <div className="goods_descriptions_bigImg">
-          <img src={this.state.bigGoodsImg} alt="img" />
+          <img src={this.state.goodsGalleryBig} alt="img" />
         </div>
         <div className="goods_descriptions_order">
           <div>
-            <h2>NameGoods</h2>
-            <span>NamesBrend</span>
+            <h2>{this.state.goodsDiscriptions.name}</h2>
+            <span>{this.state.goodsDiscriptions.brand}</span>
           </div>
-          {this.state.goodsAttributes.map((item, index) => (
-            <form
-              onChange={this.getAttributes}
-              className="goods_descriptions_check"
-              key={index}
-            >
-              <p id={item.id} className="goods_descriptions_check_label">
-                {item.name} :
-              </p>
-              <div
-                ref={this.nameCheck}
-                className="goods_descriptions_check_box"
-              >
-                {item.items.map((item, index) => (
-                  <label id="lb" key={index}>
-                    <input
-                      className={
-                        item.value.includes("#")
-                          ? "goods_descriptions_check_color"
-                          : "goods_descriptions_check_items"
-                      }
-                      name="text"
-                      type="radio"
-                      value={item.value}
-                      style={{
-                        backgroundColor: item.value.includes("#")
-                          ? item.value
-                          : "",
-                      }}
-                    />
-                    <span>{!item.value.includes("#") && item.value}</span>
-                  </label>
-                ))}
-              </div>
-            </form>
-          ))}
-
-          <div className="goods_descriptions_check_down">
-            <h4>Price:</h4>
-            <span>$ {this.state.goodsPrices}</span>
-            {/* needed get to symbol for amount */}
-            <button className="goods_descriptions_btn" type="submit">
-              ADD TO CART
-            </button>
-            <div className="text_description_html"></div>
-          </div>
+          <FormGoods
+            goodsAttributes={this.state.goodsAttributes}
+            goodsPrices={this.state.goodsPrices} //+symbol
+            goodsDiscriptions={this.state.goodsDiscriptions}
+            goodsFoto={this.state.goodsGallery}
+          />
+          <div ref={this.getElement} className="text_description_html"></div>
         </div>
       </section>
     );

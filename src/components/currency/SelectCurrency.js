@@ -3,10 +3,12 @@ import { Component } from "react";
 import "./currency.css";
 import client from "../data/index";
 import { CURRENCY_DETIALS } from "../data/data";
+import { connect } from "react-redux";
+import { selectCurrency } from "../../store/currencySlice";
 
-export default class SelectCurrency extends Component {
-  constructor() {
-    super();
+class SelectCurrency extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       classBlock: "display_none",
       arrow: "arrow",
@@ -42,15 +44,14 @@ export default class SelectCurrency extends Component {
     event.relatedTarget.className !== "active_chose"
       ? this.setState({ classBlock: "display_none", arrow: "arrow" })
       : this.setState({ value: event.relatedTarget.value });
+    this.props.selectCurrency(this.state.value);
   }
   render() {
     return (
       <div
         tabIndex="0"
         className="drop_down"
-        onKeyDown={(event) =>
-          event.code === "Enter" ? this.dropDown() : false
-        }
+        onKeyDown={(event) => event.code === "Enter" && this.dropDown()}
         onClick={this.dropDown}
         onBlur={this.handleBlur}
       >
@@ -72,3 +73,9 @@ export default class SelectCurrency extends Component {
     );
   }
 }
+
+const mapDispatchToProps = () => ({
+  selectCurrency,
+});
+
+export default connect(undefined, mapDispatchToProps())(SelectCurrency);

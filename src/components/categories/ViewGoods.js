@@ -2,20 +2,23 @@ import { React, Component } from "react";
 import "./categories.css";
 import { Link } from "react-router-dom";
 import addToCart from "./img/Common.png";
+import { connect } from "react-redux";
+import { increment } from "../../store/cartSlice";
 
-export default class ViewGoods extends Component {
-  // symbol = Reduxe Store/ SelectCurency
-  constructor() {
-    super();
-    this.state = {
-      addToCartBtn: "goods_button_cart_closed",
-    };
+class ViewGoods extends Component {
+  constructor(props) {
+    super(props);
+
+    this.addToCart = this.addToCart.bind(this);
   }
 
   linkToAll = () => {
-    return window.location.pathname === "/"
-      ? (window.location.pathname = "/all")
-      : null;
+    window.location.pathname === "/" && (window.location.pathname = "/all");
+  };
+
+  addToCart = (event) => {
+    event.preventDefault();
+    this.props.increment(event.target.id); // add goods from redux-store,with help action
   };
 
   render() {
@@ -36,6 +39,7 @@ export default class ViewGoods extends Component {
                 }
               >
                 <p>out of stock</p>
+
                 <img
                   src={item.gallery[0]}
                   alt="goods"
@@ -46,16 +50,23 @@ export default class ViewGoods extends Component {
                 <div>
                   {item.brand} {item.name}
                   <h4>
-                    {this.props.symbol}
+                    {this.props.getCurrency}
                     {
                       item.prices.find(
-                        (item) => item.currency.symbol === this.props.symbol
+                        (item) =>
+                          item.currency.symbol === this.props.getCurrency
                       ).amount
                     }
                   </h4>
                 </div>
-                <div className={this.state.addToCartBtn}>
-                  <img src={addToCart} alt="addToCart" title="Add to cart" />
+                <div className="goods_button_cart">
+                  <img
+                    onClick={this.addToCart}
+                    src={addToCart}
+                    alt="AddToCart"
+                    id={item.id}
+                    title="Add to cart"
+                  />
                 </div>
               </div>
             </div>
@@ -65,3 +76,12 @@ export default class ViewGoods extends Component {
     );
   }
 }
+
+const mapDispatchToProps = () => ({
+  increment,
+});
+const mapStateToProps = (state) => ({
+  getCurrency: state.currency.value,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(ViewGoods);

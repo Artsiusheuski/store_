@@ -10,7 +10,6 @@ export default class Clotheth extends Component {
     this.state = {
       nameСategory: "",
       goods: [],
-      symbol: "",
     };
   }
 
@@ -24,7 +23,6 @@ export default class Clotheth extends Component {
         this.setState({
           nameСategory: "clothes",
           goods: result.data.category.products,
-          symbol: result.data.category.products[0].prices[2].currency.symbol, //need to get from storage and currency selection
         })
       );
   }
@@ -33,7 +31,7 @@ export default class Clotheth extends Component {
     return (
       <>
         <h1 className="wrapper_main_title">{this.state.nameСategory}</h1>
-        <ViewGoods goods={this.state.goods} symbol={this.state.symbol} />
+        <ViewGoods goods={this.state.goods} />
       </>
     );
   }
