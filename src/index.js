@@ -11,11 +11,9 @@ import store from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ApolloProvider client={client}>
-    {/* <React.StrictMode> */}
     <Provider store={store}>
       <App />
     </Provider>
-    {/* </React.StrictMode> */}
   </ApolloProvider>
 );
 
