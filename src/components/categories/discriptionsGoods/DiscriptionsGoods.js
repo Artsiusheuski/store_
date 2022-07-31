@@ -6,8 +6,8 @@ import "./discriptionsGoods.css";
 import FormGoods from "./FormGoods";
 
 export default class DiscriptionsGoods extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       goodsAttributes: [],
@@ -45,9 +45,7 @@ export default class DiscriptionsGoods extends Component {
             goodsGallery: result.data.product.gallery,
             goodsGalleryBig: result.data.product.gallery[0],
             goodsAttributes: result.data.product.attributes,
-            goodsPrices: result.data.product.prices.find(
-              (item) => item.currency.symbol === "$" //get from redux/
-            ).amount,
+            goodsPrices: result.data.product.prices,
           }),
           this.getElement.current.insertAdjacentHTML(
             "afterbegin",

@@ -10,7 +10,6 @@ export default class Tech extends Component {
     this.state = {
       nameCategory: "",
       goods: [],
-      symbol: "",
     };
   }
 
@@ -24,7 +23,6 @@ export default class Tech extends Component {
         this.setState({
           nameCategory: "tech",
           goods: result.data.category.products,
-          symbol: result.data.category.products[0].prices[3].currency.symbol, //need to get from storage and currency selection
         })
       );
   }
@@ -33,7 +31,7 @@ export default class Tech extends Component {
     return (
       <>
         <h1 className="wrapper_main_title">{this.state.nameCategory}</h1>
-        <ViewGoods goods={this.state.goods} symbol={this.state.symbol} />
+        <ViewGoods goods={this.state.goods} />
       </>
     );
   }

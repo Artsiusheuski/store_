@@ -1,13 +1,32 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 
-export default class Cart extends Component {
+class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.atributes = this.props.getGoods;
+  }
+
   render() {
     return (
-      <main>
-        <section className="wrapper_main">
-          <h1>Cart</h1>
+      <>
+        {console.log(this.atributes)}
+        <h1 className="wrapper_main_title">Cart</h1>
+        <section>
+          {this.atributes.map((item, index) => (
+            <div key={index}>
+              {item.goods.discriptionGoods.name}
+              {item.goods.discriptionGoods.brand}
+
+              <p>{this.atributes.length}</p>
+            </div>
+          ))}
         </section>
-      </main>
+      </>
     );
   }
 }
+const mapStateToProps = (state) => ({
+  getGoods: state.cart.value,
+});
+export default connect(mapStateToProps)(Cart);

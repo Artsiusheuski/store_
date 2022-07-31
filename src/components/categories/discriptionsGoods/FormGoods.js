@@ -1,57 +1,44 @@
 import React from "react";
 import { Component } from "react";
+import { increment } from "../../../store/cartSlice";
+import { connect } from "react-redux";
 
-export default class FormGoods extends Component {
+class FormGoods extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      goodsParams: {},
-    };
 
     this.addToCart = this.addToCart.bind(this);
   }
 
   addToCart(event) {
     event.preventDefault();
+    let setParams = [];
+    const getParams = event.target.elements;
+    for (let i = 0; i < getParams.length; i++) {
+      if (getParams[i].checked) {
+        setParams.push({ name: getParams[i].name, value: getParams[i].value });
+      }
+    }
 
-    const params = event.target.elements;
-
-    // let countCheck = [];
-    // let countName = [];
-    // let boxNames;
     const goods = {
       discriptionGoods: this.props.goodsDiscriptions,
-      priceGoods: this.props.goodsPrices,
+      // priceGoods: this.props.goodsPrices,
       imageGoods: this.props.goodsFoto,
-      paramsGoods: params,
+      goodsAttributes: this.props.goodsAttributes,
+      paramsGoods: setParams,
     };
-    console.log(goods);
-    // for (let i = 0; i < params.length; i++) {
-    //   if (params[i].name) {
-    //     countName.push(params[i].name);
-    //     boxNames = new Set(countName);
-    //   }
-    //   if (params[i].checked) {
-    //     countCheck.push(params[i].checked);
-    //     goods.push(params[i].name, params[i].value);
-    //   }
-    // }
-
-    // if (countCheck.length === boxNames.size)
-    //   this.setState({ goodsParams: { ...goods } });
+    this.props.increment({ goods });
   }
 
   render() {
     return (
       <form onSubmit={this.addToCart} action="">
-        {console.log(this.state.goodsParams)}
         {this.props.goodsAttributes.map((item, index) => (
           <div className="goods_descriptions_check" key={index}>
             <p className="goods_font_label">{(this.name = item.name)} :</p>
             <div className="goods_descriptions_check_box">
-              {item.items.map((item, index) => (
-                <label id={this.name} key={index}>
+              {item.items.map((item) => (
+                <label key={item.id}>
                   <input
                     className={
                       item.value.includes("#")
@@ -75,8 +62,13 @@ export default class FormGoods extends Component {
 
         <div className="goods_descriptions_check_down">
           <h4 className="goods_font_label">Price:</h4>
-          <span>$ {this.props.goodsPrices}</span>
-          {/* needed get to symbol for amount */}
+          <span>
+            {this.props.getCurrency}{" "}
+            {this.props.goodsPrices.length &&
+              this.props.goodsPrices.find(
+                (item) => item.currency.symbol === this.props.getCurrency
+              ).amount}
+          </span>
         </div>
         <div>
           <button className="goods_descriptions_btn" type="submit">
@@ -87,3 +79,11 @@ export default class FormGoods extends Component {
     );
   }
 }
+const mapDispatchToProps = () => ({
+  increment,
+});
+const mapStateToProps = (state) => ({
+  getCurrency: state.currency.value,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps())(FormGoods);
