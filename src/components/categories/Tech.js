@@ -13,15 +13,22 @@ export default class Tech extends Component {
     };
   }
 
+  nameCategory() {
+    let index = window.location.pathname.lastIndexOf("/");
+    let searchName = window.location.pathname;
+
+    return searchName.substring(index + 1);
+  }
+
   componentDidMount() {
     client
       .query({
         query: GET_PRODUCTS_BY_CATEGORY,
-        variables: { input: { title: "tech" } },
+        variables: { input: { title: this.nameCategory() } },
       })
       .then((result) =>
         this.setState({
-          nameCategory: "tech",
+          nameCategory: this.nameCategory(),
           goods: result.data.category.products,
         })
       );

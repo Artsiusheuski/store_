@@ -6,8 +6,9 @@ import SelectCurrency from "../currency/SelectCurrency";
 import "./header.css";
 import client from "../data";
 import { CATEGORY_NAMES } from "../data/data";
+import { connect } from "react-redux";
 
-export default class Header extends Component {
+class Header extends Component {
   constructor() {
     super();
     this.state = {
@@ -48,6 +49,9 @@ export default class Header extends Component {
               <Link to={"/cart"}>
                 <img className="cart" src={cart} alt="cart" title="cart" />
               </Link>
+              <span className={this.props.count && "classCountCart"}>
+                {this.props.count}
+              </span>
             </li>
           </ul>
         </nav>
@@ -55,3 +59,8 @@ export default class Header extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  count: state.cart.count,
+});
+export default connect(mapStateToProps)(Header);

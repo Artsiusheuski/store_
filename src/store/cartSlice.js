@@ -4,11 +4,15 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     value: [],
+    count: "",
   },
   reducers: {
     increment: (state, data) => {
       let setGoods = data.payload;
+
       state.value.push(setGoods);
+
+      state.count = state.value.length;
     },
   },
 });

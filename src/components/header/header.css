@@ -31,6 +31,7 @@ ul{
  .cart{
     width: 20px;
     height: 20px;
+    position: relative;
  }
 
 .for_link{
@@ -43,3 +44,21 @@ ul{
     border-bottom: #5ECE7B 2px solid;
     /* transform: scale(1.1); */
 }
+
+.classCountCart{
+    background-color: #1D1F22;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 60%;
+    margin-top: -8px;
+    margin-left: -6px;
+}
+
+
