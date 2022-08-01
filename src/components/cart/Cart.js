@@ -4,23 +4,15 @@ import { connect } from "react-redux";
 class Cart extends Component {
   constructor(props) {
     super(props);
-    this.atributes = this.props.getGoods;
+    this.product = this.props.getGoods;
   }
-
   render() {
     return (
       <>
-        {console.log(this.atributes)}
         <h1 className="wrapper_main_title">Cart</h1>
+        {console.log(this.product)}
         <section>
-          {this.atributes.map((item, index) => (
-            <div key={index}>
-              {item.goods.discriptionGoods.name}
-              {item.goods.discriptionGoods.brand}
-
-              <p>{this.atributes.length}</p>
-            </div>
-          ))}
+          <h3>{this.product.length}</h3>
         </section>
       </>
     );

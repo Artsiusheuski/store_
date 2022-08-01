@@ -18,7 +18,9 @@ class ViewGoods extends Component {
 
   addToCart = (event) => {
     event.preventDefault();
-    this.props.increment(event.target.id); // add goods from redux-store,with help action
+    // console.log(this.props.goods.find((item) => item.id === event.target.id));
+    let goods = this.props.goods.find((item) => item.id === event.target.id);
+    this.props.increment({ goods }); // add goods from redux-store,with help action
   };
 
   render() {

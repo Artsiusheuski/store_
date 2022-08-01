@@ -46,6 +46,7 @@ export default class DiscriptionsGoods extends Component {
             goodsGalleryBig: result.data.product.gallery[0],
             goodsAttributes: result.data.product.attributes,
             goodsPrices: result.data.product.prices,
+            goods: result.data.product,
           }),
           this.getElement.current.insertAdjacentHTML(
             "afterbegin",
@@ -63,10 +64,10 @@ export default class DiscriptionsGoods extends Component {
     return (
       <section className="wrapper_goods_descriptions">
         <div className="goods_descriptions_img">
-          {this.state.goodsGallery.map((item, id) => (
+          {this.state.goodsGallery.map((item, index) => (
             <img
               onClick={this.imageSwitcher}
-              key={id}
+              key={index}
               src={item}
               alt="imgGoods"
             />
@@ -83,8 +84,7 @@ export default class DiscriptionsGoods extends Component {
           <FormGoods
             goodsAttributes={this.state.goodsAttributes}
             goodsPrices={this.state.goodsPrices} //+symbol
-            goodsDiscriptions={this.state.goodsDiscriptions}
-            goodsFoto={this.state.goodsGallery}
+            goods={this.state.goods}
           />
           <div ref={this.getElement} className="text_description_html"></div>
         </div>

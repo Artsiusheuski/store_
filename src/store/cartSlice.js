@@ -8,12 +8,6 @@ export const cartSlice = createSlice({
   reducers: {
     increment: (state, data) => {
       let setGoods = data.payload;
-
-      console.log(setGoods);
-
-      if (typeof setGoods === "string") {
-        console.log(setGoods);
-      }
       state.value.push(setGoods);
     },
   },
