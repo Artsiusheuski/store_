@@ -1,6 +1,7 @@
 .wrapper_goods_descriptions{
     display: grid;
     width: 100%;
+    grid-column: 2/4;
     grid-template-columns: repeat(auto-fit, 9% 60% 25%);
     justify-items: center; 
 }

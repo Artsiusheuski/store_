@@ -11,8 +11,7 @@
 
 .wrapper{
     max-width: 1440px;
-    margin: 0 auto;
-    padding:0 5%;
+    grid-template-columns: 5% 1fr 5%;
    /* position: relative; */
     min-height: 100%;
     display: grid;
@@ -24,7 +23,8 @@
 .wrapper_main{
     grid-area: main;
     display: grid;
-    grid-template: 1fr;
+    grid-column: 1/4;
+    grid-template-columns: 5% 1fr 5%;
  }
  
 

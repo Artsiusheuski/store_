@@ -8,9 +8,11 @@ a{
    font-weight: 400;
    text-transform: capitalize;
    align-self: center;
+   grid-column: 2/3;
 }
         
 .wrapper_main_section{
+   grid-column: 2/3;
    justify-content: space-around;
    display: grid;
    gap: 15px;
