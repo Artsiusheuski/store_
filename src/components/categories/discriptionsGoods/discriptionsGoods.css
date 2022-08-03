@@ -1,7 +1,9 @@
 .wrapper_goods_descriptions{
     display: grid;
     width: 100%;
+    grid-column: 2/4;
     grid-template-columns: repeat(auto-fit, 9% 60% 25%);
+    justify-items: center; 
 }
 
 .wrapper_goods_descriptions>div{
@@ -32,13 +34,16 @@
 }
 
 .goods_descriptions_order>div>span{
-    line-height: 2rem;
     font-size: 24px;
+}
+
+.goods_descriptions_order>div{
+    height: 20%;
 }
 
 .goods_descriptions_order{
     display: grid;
-    max-height: 100vh;
+    max-height: 70vh;
 }
 
 .goods_descriptions_btn{
@@ -63,24 +68,26 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-bottom: 10px;
 }
 
 .goods_font_label{
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
     font-size: 18px;
+    margin-bottom: 5px;
 }
 
 .goods_descriptions_check_box{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .goods_descriptions_check_items{
     border: 1px black solid;
-    width: 55px;
-    height: 38px;
+    width: 3em;
+    height: 2em;
     display: grid;
-    margin-right: 10px;
     place-items: center;
     cursor: pointer;
 } 
@@ -89,7 +96,6 @@
     width: 31px;
     height: 31px;
     display: grid;
-    margin-right: 10px;
     cursor: pointer;
     border: 1px solid #baf7f7;
     box-sizing: border-box;
@@ -101,6 +107,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-bottom: 10px;
 }
 
 input {
@@ -118,17 +125,18 @@ input {
 .goods_descriptions_check_items:checked + span{
     background:#1D1F22;
     color: #ffffff;
-    width: 55px;
-    height: 38px;
+    width: 3em;
+    height: 2em;
 } 
 
 .goods_descriptions_check_box>label{
     display: grid;
     place-items: center;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .goods_descriptions_check_box>label>span{
-    margin-left: -10px;
     position: absolute;
     cursor: pointer;
     display: grid;
@@ -142,7 +150,7 @@ input {
     font-family: 'Roboto', sans-serif;
     flex-direction: column;
     font-weight: 400;
-    line-height: 25.59px
+    line-height: 26px
 }
 
 .text_description_html>div>ul{

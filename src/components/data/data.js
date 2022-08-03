@@ -17,29 +17,6 @@ export const CURRENCY_DETIALS = gql`
   }
 `;
 
-export const ALL_CATEGORY_SECTION = gql`
-  {
-    category {
-      name
-      products {
-        id
-        name
-        prices {
-          amount
-          currency {
-            symbol
-          }
-        }
-        gallery
-        inStock
-        description
-        category
-        brand
-      }
-    }
-  }
-`;
-
 export const GET_PRODUCT_ID = gql`
   query product($id: String!) {
     product(id: $id) {

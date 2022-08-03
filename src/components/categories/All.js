@@ -1,6 +1,6 @@
 import { React, Component } from "react";
 import client from "../data";
-import { ALL_CATEGORY_SECTION } from "../data/data";
+import { GET_PRODUCTS_BY_CATEGORY } from "../data/data";
 import "./categories.css";
 import ViewGoods from "./ViewGoods";
 
@@ -13,14 +13,22 @@ export default class All extends Component {
     };
   }
 
+  nameCategory() {
+    let index = window.location.pathname.lastIndexOf("/");
+    let searchName = window.location.pathname;
+
+    return searchName.substring(index + 1);
+  }
+
   componentDidMount() {
     client
       .query({
-        query: ALL_CATEGORY_SECTION,
+        query: GET_PRODUCTS_BY_CATEGORY,
+        variables: { input: { title: this.nameCategory() } },
       })
       .then((result) =>
         this.setState({
-          nameCategory: result.data.category,
+          nameCategory: this.nameCategory(),
           goods: result.data.category.products,
         })
       );
@@ -29,7 +37,7 @@ export default class All extends Component {
   render() {
     return (
       <>
-        <h1 className="wrapper_main_title">{this.state.nameCategory.name}</h1>
+        <h1 className="wrapper_main_title">{this.state.nameCategory}</h1>
         <ViewGoods goods={this.state.goods} />
       </>
     );

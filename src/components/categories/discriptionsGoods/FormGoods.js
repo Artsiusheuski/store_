@@ -21,13 +21,10 @@ class FormGoods extends Component {
     }
 
     const goods = {
-      discriptionGoods: this.props.goodsDiscriptions,
-      // priceGoods: this.props.goodsPrices,
-      imageGoods: this.props.goodsFoto,
-      goodsAttributes: this.props.goodsAttributes,
+      goods: this.props.goods,
       paramsGoods: setParams,
     };
-    this.props.increment({ goods });
+    this.props.increment(goods);
   }
 
   render() {
