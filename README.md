@@ -1,1 +1,1 @@
-Hello ScyndiWeb!
+Hello ScandiWeb!
