@@ -1,0 +1,153 @@
+.select {
+    min-width: 8%;
+    background-color: #ffffff;
+    margin-top: 30px;
+    margin-left: 35px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    height: 20px;
+    z-index: 1;
+    position: absolute;
+    cursor: pointer;
+    height: auto;
+    z-index: 2;
+    filter: drop-shadow(0px 4px 35px #a8acb030);
+      -webkit-animation: showBlock 1s linear forwards;
+            animation: showBlock 1s linear forwards;
+}
+
+.select>option{
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    padding:10px 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    
+}
+
+.display_none{
+    display: none;
+    -webkit-animation: hidenBlock 1s linear forwards;
+    animation: hidenBlock 1s linear forwards;
+}
+
+.drop_down{
+    display: flex;
+    align-items: baseline;
+    height: 20px;
+    width:50px;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+
+.active_chose:hover{
+    background-color: #EEEEEE;
+}
+
+.arrow{
+    margin-left: 5px;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.arrow::before {
+    transition: .3s ease;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 50%;
+    width: 1px;
+    background-color:#000000;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);/*222*/
+    transform-origin: left bottom;
+  }
+
+ .arrow::after {
+    transition: .3s ease;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 50%;
+    background-color: #000000;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);/*44*/
+    transform-origin: left bottom;
+}
+
+.arrow_down{
+    margin-left: 5px;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.arrow_down::before {
+    transition: .3s ease;
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 50%;
+    width: 1px;
+    background-color:#000000;
+    content: "";
+    transform: translateX(10px) rotate(222deg);/*222*/
+    transform-origin: left bottom;
+  }
+
+ .arrow_down::after {
+    transition: .3s ease;
+    position: absolute;
+    left: 0;
+    bottom: 40%;
+    height: 1px;
+    width: 50%;
+    background-color: #000000;
+    content: "";
+    transform: translateX(9px) rotate(44deg);/*44*/
+    transform-origin: left bottom;
+}
+  
+  @-webkit-keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes hidenBlock {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes hidenBlock {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
