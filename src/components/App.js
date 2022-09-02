@@ -5,8 +5,8 @@ import PLP from "./categories/PLP";
 import Cart from "./cart/Cart";
 import PDP from "./categories/discriptionsGoods/PDP";
 import Error from "./Error";
-import { CATEGORY_NAMES } from "./data/data";
-import client from "./data";
+import { CATEGORY_NAMES } from "../backend/data";
+import client from "../backend";
 
 class App extends PureComponent {
   constructor(props) {

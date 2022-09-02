@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import client from "../../data";
-import { GET_PRODUCT_ID } from "../../data/data";
+import client from "../../../backend";
+import { GET_PRODUCT_ID } from "../../../backend/data";
 import "./discriptionsGoods.css";
 import FormGoods from "./FormGoods";
 

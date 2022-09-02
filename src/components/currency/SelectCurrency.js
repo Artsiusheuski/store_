@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import "./currency.css";
-import client from "../data/index";
-import { CURRENCY_DETIALS } from "../data/data";
+import client from "../../backend/index";
+import { CURRENCY_DETIALS } from "../../backend/data";
 import { connect } from "react-redux";
-import { selectCurrency } from "../../store/currencySlice";
+import { selectCurrency } from "../../reduxStore/currencySlice";
 
 class SelectCurrency extends PureComponent {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { increment } from "../../../store/cartSlice";
+import { increment } from "../../../reduxStore/cartSlice";
 import { connect } from "react-redux";
 
 class FormGoods extends PureComponent {

@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import client from "../data";
-import { GET_PRODUCTS_BY_CATEGORY } from "../data/data";
+import client from "../../backend";
+import { GET_PRODUCTS_BY_CATEGORY } from "../../backend/data";
 import "./categories.css";
 import ShowGoods from "./ShowGoods";
 

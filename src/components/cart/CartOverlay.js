@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import "./cartOverlay.css";
 import "../categories/discriptionsGoods/discriptionsGoods.css";
-import { dicrement, increment } from "../../store/cartSlice";
+import { dicrement, increment } from "../../reduxStore/cartSlice";
 import Total from "./Total";
 import SwitcherGallery from "./SwitcherGallery";
 class CartOverlay extends PureComponent {

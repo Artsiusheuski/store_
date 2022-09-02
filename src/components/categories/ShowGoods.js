@@ -3,7 +3,7 @@ import "./categories.css";
 import { Link } from "react-router-dom";
 import addToCart from "./img/Common.png";
 import { connect } from "react-redux";
-import { increment } from "../../store/cartSlice";
+import { increment } from "../../reduxStore/cartSlice";
 
 class ShowGoods extends PureComponent {
   addToCart = (event) => {
