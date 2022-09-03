@@ -18,7 +18,8 @@ class Header extends PureComponent {
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
-  btnCartOverlay() {
+  btnCartOverlay(event) {
+    event.stopPropagation();
     if (this.state.displayCart === "conteiner_cart_overlay_none") {
       this.setState({
         displayCart: "conteiner_cart_overlay",
@@ -67,7 +68,7 @@ class Header extends PureComponent {
               <li>
                 <SelectCurrency />
               </li>
-              <li>
+              <li className="header_cart_met">
                 <span>
                   <img
                     onClick={this.btnCartOverlay}
