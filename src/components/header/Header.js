@@ -18,8 +18,7 @@ class Header extends PureComponent {
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
-  btnCartOverlay(event) {
-    event.stopPropagation();
+  btnCartOverlay() {
     if (this.state.displayCart === "conteiner_cart_overlay_none") {
       this.setState({
         displayCart: "conteiner_cart_overlay",

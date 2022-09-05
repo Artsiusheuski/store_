@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloProvider } from "@apollo/client";
-import client from "../src/components/data/";
+import client from "./backend";
 import "./style.css";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./reduxStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
