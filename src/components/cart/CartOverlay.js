@@ -40,11 +40,12 @@ class CartOverlay extends PureComponent {
               <h3>{item.goods.brand}</h3>
               <h4>
                 <span> {this.props.getCurrency}</span>
-                {(
-                  item.goods.prices.find(
+                {item.goods.prices
+                  .find(
                     (item) => item.currency.symbol === this.props.getCurrency
-                  ).amount * this.props.count[(this.keyID = item.keyID)]
-                ).toFixed(2)}
+                  )
+                  .amount.toFixed(2) *
+                  this.props.count[(this.keyID = item.keyID)]}
               </h4>
               <div>
                 {item.goods.attributes.map((item, index) => (
