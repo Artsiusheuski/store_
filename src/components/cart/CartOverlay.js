@@ -27,7 +27,6 @@ class CartOverlay extends PureComponent {
         ).amount * this.props.count[item.keyID]
     );
     let total = box.length > 0 && box.reduce((a, b) => a + b).toFixed(2);
-    console.log(total);
     return total * 1;
   };
 
