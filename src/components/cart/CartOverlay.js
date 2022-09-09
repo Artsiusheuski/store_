@@ -27,7 +27,7 @@ class CartOverlay extends PureComponent {
         ).amount * this.props.count[item.keyID]
     );
     let total = box.length > 0 && box.reduce((a, b) => a + b).toFixed(2);
-    return total * 1;
+    return total;
   };
 
   render() {
@@ -40,12 +40,11 @@ class CartOverlay extends PureComponent {
               <h3>{item.goods.brand}</h3>
               <h4>
                 <span> {this.props.getCurrency}</span>
-                {item.goods.prices
-                  .find(
+                {(
+                  item.goods.prices.find(
                     (item) => item.currency.symbol === this.props.getCurrency
-                  )
-                  .amount.toFixed(2) *
-                  this.props.count[(this.keyID = item.keyID)]}
+                  ).amount * this.props.count[(this.keyID = item.keyID)]
+                ).toFixed(2)}
               </h4>
               <div>
                 {item.goods.attributes.map((item, index) => (

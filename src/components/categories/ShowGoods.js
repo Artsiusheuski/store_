@@ -58,12 +58,12 @@ class ShowGoods extends PureComponent {
                     {item.brand} {item.name}
                     <h4>
                       {this.props.getCurrency}
-                      {
-                        item.prices.find(
+                      {item.prices
+                        .find(
                           (item) =>
                             item.currency.symbol === this.props.getCurrency
-                        ).amount
-                      }
+                        )
+                        .amount.toFixed(2)}
                     </h4>
                   </div>
                   <div className="goods_button_cart">
