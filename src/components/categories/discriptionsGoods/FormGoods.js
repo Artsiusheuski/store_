@@ -71,9 +71,9 @@ class FormGoods extends PureComponent {
           <span>
             {this.props.getCurrency}{" "}
             {this.props.goodsPrices.length &&
-              this.props.goodsPrices.find(
-                (item) => item.currency.symbol === this.props.getCurrency
-              ).amount}
+              this.props.goodsPrices
+                .find((item) => item.currency.symbol === this.props.getCurrency)
+                .amount.toFixed(2)}
           </span>
         </div>
         <div>
