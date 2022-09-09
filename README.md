@@ -1,1 +1,1 @@
-Hello ScandiWeb!
+PureComponent_
