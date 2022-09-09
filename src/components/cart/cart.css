@@ -49,11 +49,6 @@
     font-weight: normal;
 }
 
- .wrapper_cart_btn_count p:hover{
-    transition: .5s all ease;
-    background-color: #39eb98;
-}
-
 .cart_wrapper .wrapper_cart_discriptions_goods{
     padding-bottom: 5px;
     padding-top: 20px;
@@ -101,6 +96,14 @@
 .cart_wrapper .wrapper_cart_btn_count span{
     font-size: 24px;
     font-weight: 500;
+}
+
+.cart_wrapper .wrapper_cart_btn_count .minus{
+    width: 20px;
+}
+
+.cart_wrapper .wrapper_cart_btn_count .plus{
+    height: 20px;
 }
 
 .cart_wrapper .wrapper_cart_total h3{

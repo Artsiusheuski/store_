@@ -88,11 +88,12 @@ class CartOverlay extends PureComponent {
             </div>
             <div className="wrapper_cart_btn_count">
               <p tabIndex="0" onClick={() => this.props.increment(item.keyID)}>
-                +
+                <span className="plus"></span>
+                <span className="minus"></span>
               </p>
               <span>{this.props.count[item.keyID]}</span>
               <p tabIndex="0" onClick={() => this.props.dicrement(item.keyID)}>
-                &minus;
+                <span className="minus"></span>
               </p>
             </div>
             <SwitcherGallery goods={item.goods} />
