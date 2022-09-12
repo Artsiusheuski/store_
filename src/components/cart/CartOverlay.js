@@ -13,6 +13,7 @@ class CartOverlay extends PureComponent {
 
   getParams = (key, nameAttributes) => {
     let filtAtr = this.props.getGoods.find((item) => item.keyID === key);
+
     let filtValue = filtAtr.paramsGoods.find(
       (item) => item.name === nameAttributes
     );

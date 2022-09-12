@@ -47,11 +47,9 @@ class ShowGoods extends PureComponent {
                   }
                 >
                   <p>out of stock</p>
-                  <img
-                    src={item.gallery[0]}
-                    alt="goods"
-                    className="goods_info_img "
-                  />
+                  <span className="goods_info_img ">
+                    <img src={item.gallery[0]} alt="goods" />
+                  </span>
                 </div>
                 <div className="goods_for_addCart">
                   <div>
