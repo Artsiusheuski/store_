@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import "./categories.css";
 import { Link } from "react-router-dom";
 import addToCart from "./img/Common.png";
 import { connect } from "react-redux";

@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import "./currency.css";
 import client from "../../backend/index";
 import { CURRENCY_DETIALS } from "../../backend/data";
 import { connect } from "react-redux";

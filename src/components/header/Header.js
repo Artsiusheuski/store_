@@ -3,9 +3,7 @@ import { NavLink } from "react-router-dom";
 import logo from "./img/a-logo.png";
 import cart from "./img/cart.png";
 import SelectCurrency from "../currency/SelectCurrency";
-import "./header.css";
 import { connect } from "react-redux";
-import "../cart/cartOverlay.css";
 import ForOverlay from "./ForOverlay";
 
 class Header extends PureComponent {

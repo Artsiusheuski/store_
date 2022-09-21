@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import client from "../../backend";
 import { GET_PRODUCTS_BY_CATEGORY } from "../../backend/data";
-import "./categories.css";
 import ShowGoods from "./ShowGoods";
 
 export default class PLP extends PureComponent {

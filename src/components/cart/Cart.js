@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import "./cart.css";
 import CartOverlay from "./CartOverlay";
 
 export default class Cart extends PureComponent {

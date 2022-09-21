@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import client from "../../../backend";
 import { GET_PRODUCT_ID } from "../../../backend/data";
-import "./discriptionsGoods.css";
 import FormGoods from "./FormGoods";
 
 export default class PDP extends PureComponent {

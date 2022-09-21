@@ -4,7 +4,7 @@ import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloProvider } from "@apollo/client";
 import client from "./backend";
-import "./style.css";
+import "./index.css";
 import { Provider } from "react-redux";
 import store from "./reduxStore";
 
