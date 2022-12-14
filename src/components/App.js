@@ -41,26 +41,27 @@ class App extends PureComponent {
 
   render() {
     return (
-      <div className="wrapper">
-        <Router>
-          <Header
-            namesCategory={this.state.namesCategory}
-            getPathName={this.getPathName}
-          ></Header>
-          <main className="wrapper_main">
-            <Routes>
-              <Route path="/" element={<PLP />} />
-              <Route
-                path="/:path"
-                element={<PLP path={this.state.categoryPath} />}
-              />
-              <Route exact path=":path/:ID" element={<PDP />} />
-              <Route path="*" element={<Error />} />
-              <Route exact path="/cart" element={<Cart />} />
-            </Routes>
-          </main>
-        </Router>
-      </div>
+      <>
+        <div className="wrapper">
+          <Router>
+            <Header
+              namesCategory={this.state.namesCategory}
+              getPathName={this.getPathName}></Header>
+            <main className="wrapper_main">
+              <Routes>
+                <Route path="/" element={<PLP />} />
+                <Route
+                  path="/:path"
+                  element={<PLP path={this.state.categoryPath} />}
+                />
+                <Route exact path=":path/:ID" element={<PDP />} />
+                <Route path="*" element={<Error />} />
+                <Route exact path="/cart" element={<Cart />} />
+              </Routes>
+            </main>
+          </Router>
+        </div>
+      </>
     );
   }
 }
