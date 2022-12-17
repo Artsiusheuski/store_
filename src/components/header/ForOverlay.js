@@ -10,8 +10,7 @@ export default class ForOverlay extends PureComponent {
           this.props.count < 1
             ? "conteiner_cart_overlay_none"
             : this.props.displayCart
-        }
-      >
+        }>
         <div className="wrapper_cart_overlay">
           <h1 className="title_cart_overlay">
             My Bag,{" "}

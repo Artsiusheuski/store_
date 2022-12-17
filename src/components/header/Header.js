@@ -31,7 +31,7 @@ class Header extends PureComponent {
       this.setState({
         displayCart: "conteiner_cart_overlay_none",
       });
-      alert("Your cart is empty"); // for exemple, it could with modal widnow
+      alert("Your cart is empty"); // for exemple, it could with modal window
     }
   }
 
@@ -77,8 +77,7 @@ class Header extends PureComponent {
                 </span>
                 <span
                   onClick={this.btnCartOverlay}
-                  className={this.props.count ? "classCountCart" : undefined}
-                >
+                  className={this.props.count ? "classCountCart" : undefined}>
                   {this.props.count !== 0 && this.props.count}
                 </span>
               </li>
