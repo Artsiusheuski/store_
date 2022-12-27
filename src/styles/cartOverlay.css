@@ -74,6 +74,11 @@
     line-height: 0%;
 }
 
+.wrapper_cart_btn_count>p:hover{
+    transition: .3s ease all;
+    background-color: #78e494;
+}
+
 .wrapper_cart_btn_count>span{
     font-weight: 600;
 }

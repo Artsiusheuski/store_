@@ -172,8 +172,8 @@ button{
 } 
 
 .cart_wrapper .switcher_img_cart p:hover{
-    transform: scale(1.05);
-    transition:  0.2s ease all;
+    transition: .3s ease all;
+    background-color: #78e494;
 }
 
 i {

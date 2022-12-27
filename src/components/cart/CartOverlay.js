@@ -50,8 +50,7 @@ class CartOverlay extends PureComponent {
                   <form
                     action="*"
                     className="goods_descriptions_check cartOverlay_check"
-                    key={index}
-                  >
+                    key={index}>
                     <p className="goods_params_title">
                       {(this.name = item.name)} :
                     </p>
@@ -85,6 +84,7 @@ class CartOverlay extends PureComponent {
                 ))}
               </div>
             </div>
+
             <div className="wrapper_cart_btn_count">
               <p tabIndex="0" onClick={() => this.props.increment(item.keyID)}>
                 <span className="plus"></span>

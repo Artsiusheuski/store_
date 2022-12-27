@@ -17,33 +17,33 @@ class Header extends PureComponent {
   }
 
   btnCartOverlay() {
-    if (this.state.displayCart === "conteiner_cart_overlay_none") {
+    if (!this.props.count) {
+      return alert("Your cart is empty"); // for exemple, it could with modal widnow
+    }
+
+    if (this.state.displayCart !== "conteiner_cart_overlay") {
       this.setState({
         displayCart: "conteiner_cart_overlay",
       });
-    }
-    if (this.state.displayCart === "conteiner_cart_overlay") {
+    } else
       this.setState({
         displayCart: "conteiner_cart_overlay_none",
       });
-    }
-    if (!this.props.count) {
-      this.setState({
-        displayCart: "conteiner_cart_overlay_none",
-      });
-      alert("Your cart is empty"); // for exemple, it could with modal window
-    }
   }
 
   handleClickOutside(event) {
     const cartOverlay = document.querySelector(".conteiner_cart_overlay");
     const classOverlay = event.target.offsetParent.className;
+
     if (
-      classOverlay !== "wrapper_cart_overlay" &&
-      classOverlay !== "conteiner_cart_overlay" &&
-      cartOverlay !== null
+      (classOverlay !== "wrapper_cart_overlay" &&
+        classOverlay !== "conteiner_cart_overlay" &&
+        cartOverlay !== null) ||
+      !this.props.count
     )
-      this.btnCartOverlay();
+      this.setState({
+        displayCart: "conteiner_cart_overlay_none",
+      });
   }
 
   render() {
@@ -85,6 +85,7 @@ class Header extends PureComponent {
           </nav>
         </header>
         <ForOverlay
+          tr={this.t}
           count={this.props.count}
           displayCart={this.state.displayCart}
           btnCartOverlay={this.btnCartOverlay}
