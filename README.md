@@ -1,1 +1,1 @@
-PureComponent_
+Test_for_scandiweb
