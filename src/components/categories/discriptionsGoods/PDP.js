@@ -46,7 +46,7 @@ export default class PDP extends PureComponent {
               },
               goodsGallery: result.data.product.gallery,
               goodsGalleryBig: result.data.product.gallery[0],
-              goodsAttributes: result.data.product.attributes,
+              goodsAttributes: [...result.data.product.attributes],
               goodsPrices: result.data.product.prices,
               goods: result.data.product,
             }),

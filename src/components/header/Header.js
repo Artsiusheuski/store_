@@ -18,7 +18,7 @@ class Header extends PureComponent {
 
   btnCartOverlay() {
     if (!this.props.count) {
-      return alert("Your cart is empty"); // for exemple, it could with modal widnow
+      return alert("Your cart is empty"); // it can with modal widnow
     }
 
     if (this.state.displayCart !== "conteiner_cart_overlay") {

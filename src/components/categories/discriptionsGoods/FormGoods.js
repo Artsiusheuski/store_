@@ -32,7 +32,7 @@ class FormGoods extends PureComponent {
       };
       this.props.increment(goods);
     } else {
-      alert("The product out of stock");
+      alert("The product out of stock"); //it could with modal widnow
     }
   }
 

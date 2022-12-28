@@ -31,20 +31,19 @@ class ShowGoods extends PureComponent {
         {this.props.goods.map((item, index) => (
           <div key={index}>
             <Link
-              to={window.location.pathname === "/" ? "all/" + item.id : item.id}
-            >
+              to={
+                window.location.pathname === "/" ? "all/" + item.id : item.id
+              }>
               <div
                 className={
                   Boolean(item.inStock) ? "goods_info" : "goods_info_oppacity"
-                }
-              >
+                }>
                 <div
                   className={
                     !Boolean(item.inStock)
                       ? "goods_info_out"
                       : "goods_info_out_close"
-                  }
-                >
+                  }>
                   <p>out of stock</p>
                   <span className="goods_info_img ">
                     <img src={item.gallery[0]} alt="goods" />
