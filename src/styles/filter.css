@@ -30,12 +30,10 @@
 
  .wrapper_filter span::before{
     content:">";
-    transition: .3s ease all;
 } 
 
 .open_position span::before{
     content:"<";
-    transition: .3s ease all;
 }
 
 /* .wrapper_filter>span:hover{
