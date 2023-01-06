@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import client from "../../backend";
 import { GET_PRODUCTS_BY_CATEGORY } from "../../backend/data";
 import ShowGoods from "./ShowGoods";
+import FilterGoods from "./FilterGoods";
 
 export default class PLP extends PureComponent {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class PLP extends PureComponent {
           {this.props.path ? this.props.path : this.categoryPathHelp()}
         </h1>
         <ShowGoods goods={this.state.goods} pathname={this.props.path} />
+        <FilterGoods />
       </>
     );
   }

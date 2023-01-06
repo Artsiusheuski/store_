@@ -1,0 +1,47 @@
+.wrapper_filter{
+    background-color: #abf7bf;
+    display: grid;
+    justify-content: end;
+    margin-left: -175px;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    border: 1px #021808 solid;
+    width: 200px;
+    z-index: 2;
+    transition: .5s ease all;
+}
+
+.open_position{
+    margin-left:0;
+    transition: .5s ease all;
+}
+
+.wrapper_filter span{
+    width: 15px;
+    max-height:30px ;
+    font-size :30px;
+    font-weight: bold;
+    margin:5px 5px 5px 5px;
+    color:#ffffff;
+    cursor: pointer; 
+
+}
+
+
+ .wrapper_filter span::before{
+    content:">";
+    transition: .3s ease all;
+} 
+
+.open_position span::before{
+    content:"<";
+    transition: .3s ease all;
+}
+
+/* .wrapper_filter>span:hover{
+    margin-right: -350px;
+    width: 80px;
+    height: 50px;
+    background: #021808;
+    color: #ffffff;
+} */
