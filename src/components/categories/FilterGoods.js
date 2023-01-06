@@ -14,7 +14,7 @@ class FilterGoods extends PureComponent {
     event.preventDefault();
     if (this.state.style_filter === "wrapper_filter") {
       this.setState({
-        style_filter: "wrapper_filter open_position",
+        style_filter: "wrapper_filter open_position_filter",
       });
     } else
       this.setState({
@@ -25,7 +25,13 @@ class FilterGoods extends PureComponent {
   render() {
     return (
       <section className={this.state.style_filter}>
-        <span onClick={this.changeStyle}></span>
+        <div className="tooltip_filter" onClick={this.changeStyle}>
+          <span className="tooltiptext_filter">
+            {this.state.style_filter === "wrapper_filter"
+              ? "Open filter"
+              : "Closed filter"}
+          </span>
+        </div>
       </section>
     );
   }
