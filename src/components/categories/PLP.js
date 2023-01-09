@@ -44,7 +44,9 @@ export default class PLP extends PureComponent {
           {this.props.path ? this.props.path : this.categoryPathHelp()}
         </h1>
         <ShowGoods goods={this.state.goods} pathname={this.props.path} />
-        <FilterGoods />
+        <FilterGoods
+          attributes={this.state.goods.map((item) => item.attributes.map((i) => i))}
+        />
       </>
     );
   }

@@ -1,45 +1,52 @@
 .wrapper_filter{
-    background-color: #abf7bf;
-    display: grid;
-    justify-content: end;
-    margin-left: -175px;
+    position: relative;
+    background-color: #65ec87;
     grid-column: 1/2;
     grid-row: 2/3;
     border: 1px #021808 solid;
-    width: 200px;
     z-index: 2;
     transition: .5s ease all;
+    color: #021808;
+    
+    width:35px;
+    
+    /* min-width:max-content;
+    max-height: min-content; */
 }
 
 .open_position_filter{
-    margin-left:0;
+    margin-left: 2%;
     transition: .5s ease all;
-}
+    width:200px;
+    max-width: 200px;
+    visibility:visible; 
+    height: min-content;
+} 
 
-.wrapper_filter div{
+.tooltip_filter{
     width: 15px;
     max-height:30px ;
     font-size :30px;
     font-weight: bold;
-    margin:5px 5px 5px 5px;
     color:#ffffff;
     cursor: pointer; 
-
+    margin-right: 5px;
 }
 
- .wrapper_filter div::before{
+.tooltip_filter::before{
     content:">";
 } 
 
-.open_position_filter div::before{
+.open_position_filter .tooltip_filter::before{
     content:"<";
 }
 
+/* for popup ___*/
+
 .tooltip_filter {
-    position: relative;
+    position: sticky;
     display: inline-block;
   }
-  
   
   .tooltip_filter .tooltiptext_filter {
     visibility: hidden;
@@ -71,3 +78,37 @@
     visibility: visible;
     opacity: 1;
   }
+
+  /* __________ */
+
+.main_filter_conteiner{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px ;
+    
+} 
+
+.wrapper_tooltip_filter{
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+}
+
+.filter_attributes_list{
+    display: flex;
+    flex-direction: column;
+}
+
+.filter_chechbox{
+    all: revert;
+    /* width: 10px;
+    height: 10px; */
+    background: #ffffff;
+}
+
+.labael_filter_color{
+    display: inline-flex;
+    margin: 2px;
+}

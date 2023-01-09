@@ -33,4 +33,5 @@
     display: grid;
     grid-column: 1/4;
     grid-template-columns: 5% 1fr 5%;
+    transition: .5s all ease;
  }
