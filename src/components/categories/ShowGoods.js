@@ -5,6 +5,13 @@ import { connect } from "react-redux";
 import { increment } from "../../reduxStore/cartSlice";
 
 class ShowGoods extends PureComponent {
+  constructor() {
+    super();
+
+    this.state = {
+      keyValue: "",
+    };
+  }
   addToCart = (event) => {
     event.preventDefault();
 
@@ -27,56 +34,58 @@ class ShowGoods extends PureComponent {
 
   render() {
     return (
-      <section className="wrapper_main_section">
-        {this.props.goods.map((item, index) => (
-          <div key={index}>
-            <Link
-              to={
-                window.location.pathname === "/" ? "all/" + item.id : item.id
-              }>
-              <div
-                className={
-                  Boolean(item.inStock) ? "goods_info" : "goods_info_oppacity"
+      <>
+        <section className="wrapper_main_section">
+          {this.props.goods.map((item, index) => (
+            <div key={index}>
+              <Link
+                to={
+                  window.location.pathname === "/" ? "all/" + item.id : item.id
                 }>
                 <div
                   className={
-                    !Boolean(item.inStock)
-                      ? "goods_info_out"
-                      : "goods_info_out_close"
+                    Boolean(item.inStock) ? "goods_info" : "goods_info_oppacity"
                   }>
-                  <p>out of stock</p>
-                  <span className="goods_info_img ">
-                    <img src={item.gallery[0]} alt="goods" />
-                  </span>
-                </div>
-                <div className="goods_for_addCart">
-                  <div>
-                    {item.brand} {item.name}
-                    <h4>
-                      {this.props.getCurrency}
-                      {item.prices
-                        .find(
-                          (item) =>
-                            item.currency.symbol === this.props.getCurrency
-                        )
-                        .amount.toFixed(2)}
-                    </h4>
+                  <div
+                    className={
+                      !Boolean(item.inStock)
+                        ? "goods_info_out"
+                        : "goods_info_out_close"
+                    }>
+                    <p>out of stock</p>
+                    <span className="goods_info_img ">
+                      <img src={item.gallery[0]} alt="goods" />
+                    </span>
                   </div>
-                  <div className="goods_button_cart">
-                    <img
-                      onClick={this.addToCart}
-                      src={addToCart}
-                      alt="AddToCart"
-                      id={item.id}
-                      title="Add to cart"
-                    />
+                  <div className="goods_for_addCart">
+                    <div>
+                      {item.brand} {item.name}
+                      <h4>
+                        {this.props.getCurrency}
+                        {item.prices
+                          .find(
+                            (item) =>
+                              item.currency.symbol === this.props.getCurrency
+                          )
+                          .amount.toFixed(2)}
+                      </h4>
+                    </div>
+                    <div className="goods_button_cart">
+                      <img
+                        onClick={this.addToCart}
+                        src={addToCart}
+                        alt="AddToCart"
+                        id={item.id}
+                        title="Add to cart"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </section>
+              </Link>
+            </div>
+          ))}
+        </section>
+      </>
     );
   }
 }

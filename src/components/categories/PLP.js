@@ -10,7 +10,11 @@ export default class PLP extends PureComponent {
 
     this.state = {
       goods: [],
+      filterGOODS: [],
     };
+
+    this.getParamsGoodsURL = this.getParamsGoodsURL.bind(this);
+    this.goodsFiltering = this.goodsFiltering.bind(this);
   }
 
   categoryPathHelp = () => {
@@ -19,7 +23,38 @@ export default class PLP extends PureComponent {
     return searchName.substring(index + 1);
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.path !== this.props.path)
+      this.setState({
+        filterGOODS: "",
+      });
+  }
+
+  getParamsGoodsURL = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    let box = {};
+    searchParams.forEach((value, key) => {
+      box[key] = value;
+    });
+    this.setState({
+      filterGOODS: box,
+    });
+  };
+
+  goodsFiltering(allGoods, filterValues) {
+    // filtering goods
+    let goodsArray = [];
+    if (allGoods.length > 0 && allGoods.length > 0)
+      for (let i = 0; i < allGoods.length; i++) {
+        for (let b = 0; b < allGoods[i].attributes.length; b++) {
+          console.log(filterValues);
+        }
+      }
+  }
+
   render() {
+    window.onload = this.getParamsGoodsURL;
+
     client
       .query({
         query: GET_PRODUCTS_BY_CATEGORY,
@@ -38,14 +73,25 @@ export default class PLP extends PureComponent {
             goods: result.data.category.products,
           });
       });
+
     return (
       <>
         <h1 className="wrapper_main_title">
           {this.props.path ? this.props.path : this.categoryPathHelp()}
         </h1>
-        <ShowGoods goods={this.state.goods} pathname={this.props.path} />
+        <ShowGoods
+          // goods={this.goodsFiltering(this.state.goods,this.state.filterGOODS )}
+          goods={this.state.goods}
+          pathname={this.props.path}
+        />
+        {console.log(
+          this.goodsFiltering(this.state.goods, this.state.filterGOODS)
+        )}
         <FilterGoods
-          attributes={this.state.goods.map((item) => item.attributes.map((i) => i))}
+          getParamsGoodsURL={this.getParamsGoodsURL}
+          attributes={this.state.goods.map((item) =>
+            item.attributes.map((i) => i)
+          )}
         />
       </>
     );
