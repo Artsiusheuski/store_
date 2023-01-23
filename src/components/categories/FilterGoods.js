@@ -12,12 +12,6 @@ class FilterGoods extends PureComponent {
     this.changeStyle = this.changeStyle.bind(this);
     this.newIndexArrow = this.newIndexArrow.bind(this);
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.attributes.length !== this.props.attributes.length)
-      this.setState({
-        productsURL: {},
-      });
-  }
 
   changeStyle() {
     if (this.state.style_filter === "wrapper_filter") {
@@ -71,7 +65,7 @@ class FilterGoods extends PureComponent {
       url.searchParams.set(key, event.target.value);
       window.history.replaceState({}, "", url);
     } else {
-      url.searchParams.set(key, "");
+      url.searchParams.delete(key);
       window.history.replaceState({}, "", url);
     }
     this.props.getParamsGoodsURL();
@@ -98,7 +92,7 @@ class FilterGoods extends PureComponent {
                 : "hidden",
           }}>
           <h3>Filtres</h3>
-          <div className="filter_attributes_list">
+          <form className="filter_attributes_list">
             {this.newIndexArrow().map((item) => (
               <div key={item}>
                 <h5>{item[0]}</h5>
@@ -110,14 +104,18 @@ class FilterGoods extends PureComponent {
                       tabIndex="0"
                       key={value}>
                       <input
-                        onInput={(event) =>
+                        onChange={(event) =>
                           event.target.checked
                             ? this.hundlerValueURL(event, item[0])
-                            : this.hundlerValueURL(undefined, item[0])
+                            : this.hundlerValueURL("", item[0])
                         }
                         name={item[0]}
                         type="checkbox"
                         value={value}
+                        checked={
+                          this.state.productsURL &&
+                          value === this.state.productsURL
+                        }
                         className="goods_descriptions_check_color"
                         style={{
                           backgroundColor: value,
@@ -140,21 +138,24 @@ class FilterGoods extends PureComponent {
                     </select>
                   </label>
                 )}
-                {item[0] !== "Size" &&
-                  item[0] !== "Color" &&
-                  item[0] !== "Capacity" &&
+                {item[1].includes("Yes") &&
                   item[1].map((value) => (
                     <div key={value}>
-                      <label>
+                      <label
+                        tabIndex="0"
+                        htmlFor={item[0]}
+                        name={item[0]}
+                        id={item[0]}>
                         <input
-                          onInput={(event) =>
+                          onChange={(event) => {
                             event.target.checked
                               ? this.hundlerValueURL(event, item[0])
-                              : this.hundlerValueURL(undefined, item[0])
-                          }
+                              : this.hundlerValueURL("", item[0]);
+                          }}
                           className="filter_chechbox"
-                          type="checkbox"
+                          id={item[0]}
                           name={item[0]}
+                          type="checkbox"
                           value={value}
                         />
                         {value}
@@ -163,7 +164,7 @@ class FilterGoods extends PureComponent {
                   ))}
               </div>
             ))}
-          </div>
+          </form>
         </div>
       </section>
     );

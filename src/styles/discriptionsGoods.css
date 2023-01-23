@@ -144,6 +144,7 @@
     display: grid;
     place-items: center;
     cursor: pointer;
+    z-index: 2;
 } 
 
 .goods_descriptions_check_color{
