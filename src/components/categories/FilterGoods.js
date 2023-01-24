@@ -51,6 +51,10 @@ class FilterGoods extends PureComponent {
   };
 
   hundlerValueURL = (event, key) => {
+    if ((!event, !key)) {
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+
     if (event) {
       this.setState({
         productsURL: event.target.value,
@@ -92,7 +96,7 @@ class FilterGoods extends PureComponent {
                 : "hidden",
           }}>
           <h3>Filtres</h3>
-          <form className="filter_attributes_list">
+          <form className="filter_attributes_list" id="some-form">
             {this.newIndexArrow().map((item) => (
               <div key={item}>
                 <h5>{item[0]}</h5>
@@ -164,6 +168,13 @@ class FilterGoods extends PureComponent {
                   ))}
               </div>
             ))}
+            <button
+              className="goods_descriptions_btn"
+              type="reset"
+              from="some-form"
+              onClick={() => this.hundlerValueURL("", "")}>
+              Reset
+            </button>
           </form>
         </div>
       </section>

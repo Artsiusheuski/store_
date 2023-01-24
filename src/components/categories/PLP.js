@@ -24,10 +24,11 @@ export default class PLP extends PureComponent {
   };
 
   componentDidUpdate(prevProps) {
-    if (prevProps.path !== this.props.path)
+    if (prevProps.path !== this.props.path) {
       this.setState({
         filterGOODS: "",
       });
+    }
   }
 
   getParamsGoodsURL = () => {
